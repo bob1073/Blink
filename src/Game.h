@@ -32,6 +32,8 @@ private:
 	sf::FloatRect walls;
 	Ball ball;
 	Paddle paddle;
-	Brick brick;
+	static constexpr int numRows = 2;
+	static constexpr int numCols = 9;
+	Brick bricks[numRows][numCols];
 	//
 };

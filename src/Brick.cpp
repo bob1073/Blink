@@ -6,8 +6,8 @@ Brick::Brick(sf::Vector2f pos, sf::Color color)
 {
 	shape.setPosition(pos);
 	shape.setFillColor(color);
-	shape.setOutlineThickness(padding);
-	shape.setOutlineColor(sf::Color::Transparent);
+	shape.setOutlineThickness(-padding);
+	shape.setOutlineColor(sf::Color::Black);
 	shape.setSize({ width, height });
 }
 
@@ -18,8 +18,9 @@ void Brick::DoBallCollision(Ball& ball)
 
 	if (ballRect.intersects(brickRect) && !isDestroyed)
 	{
-		ball.ReboundY();
 		isDestroyed = true;
+		ball.ReboundY();
+		
 	}
 	// WARNING: We need to implemment collision with edges!!
 }
@@ -30,4 +31,14 @@ void Brick::Render(sf::RenderTarget& target)
 	{
 		target.draw(shape);
 	}
+}
+
+float Brick::GetWidth()
+{
+	return width;
+}
+
+float Brick::GetHeight()
+{
+	return height;
 }

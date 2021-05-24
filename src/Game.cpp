@@ -5,9 +5,16 @@ Game::Game()
     window(sf::VideoMode(screenWidth, screenHeight), "Blink"),
     walls(0.0f, 0.0f, screenWidth, screenHeight),
     ball({ screenWidth / 2.0f, screenHeight / 2.0f }, { 0.0f, 1.0f }),
-    paddle({ screenWidth / 3.0f, 8.0f * screenHeight / 10.0f }),
-    brick({ 350.0f, 100.0f }, sf::Color::Red)
+    paddle({ screenWidth / 3.0f, 8.0f * screenHeight / 10.0f })
 {
+    
+    for (int rows = 0; rows < numRows; ++rows)
+    {
+        for (int cols = 0; cols < numCols; ++cols)
+        {
+            bricks[rows][cols] = Brick({ 50.0f + cols * Brick::GetWidth(), 50.0f + rows * Brick::GetHeight() }, sf::Color::Green);
+        }
+    }
 }
 
 Game::~Game()
@@ -38,7 +45,13 @@ void Game::Update()
     paddle.Update(dt, walls);
     paddle.DoBallCollision(ball);
 
-    brick.DoBallCollision(ball);
+    for (int rows = 0; rows < numRows; ++rows)
+    {
+        for (int cols = 0; cols < numCols; ++cols)
+        {
+            bricks[rows][cols].DoBallCollision(ball);
+        }
+    }
 }
 
 void Game::Render()
@@ -47,7 +60,13 @@ void Game::Render()
     // Render things here
     ball.Render(window);
     paddle.Render(window);
-    brick.Render(window);
+    for (int rows = 0; rows < numRows; ++rows)
+    {
+        for (int cols = 0; cols < numCols; ++cols)
+        {
+            bricks[rows][cols].Render(window);
+        }
+    }
     //
     window.display();
 }

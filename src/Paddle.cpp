@@ -54,6 +54,7 @@ bool Paddle::DoBallCollision(Ball& ball) const
 
 		ball.Rebound({ ratio, -1.0f });
 
+		// Need implementation of the edges? maybe not
 		return true;
 	}
 
