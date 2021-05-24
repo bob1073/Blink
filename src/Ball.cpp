@@ -12,7 +12,7 @@ Ball::Ball(const sf::Vector2f& startPos, const sf::Vector2f& startDir)
 
 	ball.setPosition(pos);
 	ball.setRadius(radius);
-	ball.setFillColor(sf::Color::Cyan);
+	ball.setFillColor(sf::Color::Magenta);
 }
 
 void Ball::Render(sf::RenderTarget& target)
@@ -75,7 +75,7 @@ bool Ball::DoWallCollisions(const sf::FloatRect& walls)
 		return true;
 	}
 
-	if (pos.x < walls.left || pos.x > right)
+	if (pos.x < walls.left || pos.x + 2.0f * radius > right)
 	{
 		ReboundX();
 		return true;
