@@ -13,6 +13,7 @@
     <ClCompile Include="src\Paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Brick.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -32,5 +33,6 @@
     <ClInclude Include="src\Paddle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Brick.h" />
   </ItemGroup>
 </Project>
