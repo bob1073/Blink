@@ -4,7 +4,8 @@ Game::Game()
 	: 
     window(sf::VideoMode(screenWidth, screenHeight), "Blink"),
     walls(0.0f, 0.0f, screenWidth, screenHeight),
-    ball({ screenWidth / 2.0f, screenHeight / 2.0f }, {0.0f, 1.0f})
+    ball({ screenWidth / 2.0f, screenHeight / 2.0f }, {0.0f, 1.0f}),
+    paddle({screenWidth/ 3.0f, 8.0f * screenHeight /10.0f})
 {
 }
 
@@ -32,6 +33,9 @@ void Game::Update()
     {
         ball.Respawn();
     }
+
+    paddle.Update(dt, walls);
+    paddle.DoBallCollision(ball);
 }
 
 void Game::Render()
@@ -39,6 +43,7 @@ void Game::Render()
     window.clear();
     // Render things here
     ball.Render(window);
+    paddle.Render(window);
     //
     window.display();
 }

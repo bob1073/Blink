@@ -6,29 +6,33 @@ class Paddle
 {
 public:
 	// Constructor
-	Paddle(sf::Vector2f pos, float width, float height);
+	Paddle(sf::Vector2f pos);
 
 	// Render
 	void Render(sf::RenderTarget& target);
 
 	// Movement
-	virtual void Update(const float& dt, const Ball& ball, const sf::FloatRect& walls) = 0;
+	void Update(const float& dt, const sf::FloatRect& walls);
 
 	// Collision
 	bool DoBallCollision(Ball& ball) const;
 
-protected:
+private:
 	// Shape
 	sf::RectangleShape paddle;
-	const float width;
-	const float height;
+	sf::RectangleShape wing1;
+	sf::RectangleShape wing2;
+	static constexpr float wingWidth = 25.0f;
+	static constexpr float width = 150.0f;
+	static constexpr float height = 25.0f;
 
 	// Movement
 	sf::Vector2f pos;
-	float ballColllisionDir = 1.0f;
 	static constexpr float speed = 500.0f;
 
+	void SetPosition(sf::Vector2f pos);
+
 	// Keep paddle inside the walls
-	float ClampScreen(float y, const sf::FloatRect& walls);
+	float ClampScreen(float x, const sf::FloatRect& walls);
 };
 
