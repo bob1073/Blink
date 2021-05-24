@@ -39,6 +39,7 @@ void Ball::ReboundY()
 void Ball::Rebound(sf::Vector2f dir)
 {
 	this->dir = dir;
+	NormalizeDir();
 }
 
 void Ball::IncrementSpeed()
