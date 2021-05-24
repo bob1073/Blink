@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "Ball.h"
 
 class Game
 {
@@ -27,6 +27,8 @@ private:
 	static constexpr int screenHeight = 600;
 
 	// User variables here
-
+	/* Entities */
+	sf::FloatRect walls;
+	Ball ball;
 	//
 };
